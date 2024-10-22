@@ -8,19 +8,15 @@
 <body>
     <h1>AI Chatbot</h1>
     <input type="text" id="user-input" placeholder="Type your message...">
-    <button onclick="sendMessage()">Send</button>
+    <button id="send-button">Send</button>
     <div id="chat-box"></div>
 
     <script>
-        function sendMessage() {
+        document.getElementById("send-button").addEventListener("click", function() {
             const userInput = document.getElementById("user-input").value;
             if (!userInput) return;
 
-            // Clear the input field
-            document.getElementById("user-input").value = '';
-
-            // Send message to the backend
-            fetch('/chat', {
+            fetch('http://127.0.0.1:5000/chat', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -37,7 +33,9 @@
             .catch(error => {
                 console.error('Error:', error);
             });
-        }
+
+            document.getElementById("user-input").value = '';
+        });
     </script>
 </body>
 </html>
