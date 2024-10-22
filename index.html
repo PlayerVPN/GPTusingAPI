@@ -7,13 +7,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>AI Chatbot</h1>
-        <div class="chat-box" id="chat-box"></div>
-        <input type="text" id="user-input" placeholder="Type your message...">
-        <button onclick="sendMessage()">Send</button>
+    <div class="chat-container">
+        <div class="header">
+            <h1>AI Chatbot</h1>
+        </div>
+        <div id="chat-box" class="chat-box"></div>
+        <div class="input-box">
+            <input type="text" id="user-input" placeholder="Type your message...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
