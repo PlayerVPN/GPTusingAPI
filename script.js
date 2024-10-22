@@ -4,9 +4,11 @@ function sendMessage() {
 
     // Append user message to chat box
     const chatBox = document.getElementById("chat-box");
-    const userMessage = document.createElement("p");
+    const userMessage = document.createElement("div");
+    userMessage.className = "user-message";
     userMessage.textContent = `You: ${userInput}`;
     chatBox.appendChild(userMessage);
+    chatBox.scrollTop = chatBox.scrollHeight;  // Auto-scroll
 
     // Send message to the backend
     fetch('/chat', {
@@ -18,9 +20,11 @@ function sendMessage() {
     })
     .then(response => response.json())
     .then(data => {
-        const botMessage = document.createElement("p");
+        const botMessage = document.createElement("div");
+        botMessage.className = "bot-message";
         botMessage.textContent = `Bot: ${data.response}`;
         chatBox.appendChild(botMessage);
+        chatBox.scrollTop = chatBox.scrollHeight;  // Auto-scroll
 
         // Clear the input field
         document.getElementById("user-input").value = '';
